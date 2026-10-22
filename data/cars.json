@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "brand": "Audi",
+    "model": "A3 35 TFSI Sportback",
+    "year": 2023,
+    "transmission": "Робот",
+    "engine": "Бензин / 1 400 см³",
+    "mileage": "23 000 км",
+    "price": "2 550 000 ₽",
+    "image": "images/cars/audi-a3.jpg"
+  }
+]

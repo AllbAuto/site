@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChinaCar — авто из Китая под ключ</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header__inner">
+        <a href="index.html" class="logo">🚗 ChinaCar</a>
+        <nav class="nav">
+            <a href="#catalog">Каталог</a>
+            <a href="#steps">Как работаем</a>
+            <a href="#about">О нас</a>
+            <a href="#faq">Вопросы</a>
+        </nav>
+        <div class="header__contacts">
+            <a href="tel:+79000000000" class="phone" id="header-phone">+7 (900) 000-00-00</a>
+            <div class="messengers" id="header-messengers"></div>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>Автомобиль из Китая с честной доставкой за 40 дней и гарантией до 1 000 000 ₽</h1>
+        <p class="hero__subtitle">Подберём, проверим и доставим авто в любую точку России. Страховка и гарантия на всех этапах.</p>
+        <a href="#lead" class="btn btn--primary">Получить консультацию</a>
+    </div>
+</section>
+
+<section class="advantages">
+    <div class="container">
+        <h2>Почему выбирают нас</h2>
+        <div class="advantages__grid">
+            <div class="card">
+                <h3>🛡 Страховка</h3>
+                <p>Страхуем автомобиль на всех этапах логистики. При существенном повреждении кузова или технического устройства страховая компания компенсирует полную стоимость авто.</p>
+            </div>
+            <div class="card">
+                <h3>✅ Гарантия 1 000 000 ₽</h3>
+                <p>Гарантийный сертификат на 1 год или 20 000 км пробега. Покрывает выплаты более чем по 50 узлам и агрегатам вашего автомобиля.</p>
+            </div>
+            <div class="card">
+                <h3>💎 Максимальный сервис</h3>
+                <p>Всегда ищем выгодные варианты перевода оплаты в Китай. Поможем с русификацией авто. Мелкие дефекты устраним за свой счёт.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="catalog" id="catalog">
+    <div class="container">
+        <h2>Каталог авто из Китая</h2>
+        <div class="catalog__filters">
+            <input type="text" id="search" placeholder="Поиск по марке/модели...">
+            <select id="filter-brand">
+                <option value="">Все марки</option>
+                <option value="Audi">Audi</option>
+                <option value="BMW">BMW</option>
+                <option value="Mercedes">Mercedes</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Volkswagen">Volkswagen</option>
+            </select>
+        </div>
+        <div class="catalog__grid" id="cars-grid"></div>
+    </div>
+</section>
+
+<section class="steps" id="steps">
+    <div class="container">
+        <h2>Как мы работаем</h2>
+        <ol class="steps__list">
+            <li><strong>Консультация</strong> — обсуждаем ваши предпочтения и бюджет, помогаем выбрать марку и модель.</li>
+            <li><strong>Договор</strong> — фиксируем параметры автомобиля и стоимость «под ключ» со всеми платежами.</li>
+            <li><strong>Заказ у дилера в Китае</strong> — оставляем предоплату за автомобиль со своих средств.</li>
+            <li><strong>Оплата авто</strong> — SWIFT-перевод через банк по INVOICE.</li>
+            <li><strong>Доставка до Саратова</strong> — автовоз через границу Китая и Казахстана.</li>
+            <li><strong>Таможенное оформление</strong> — брокер встречает авто, оплачивается пошлина.</li>
+            <li><strong>Передача автомобиля</strong> — доставка в ваш город, оформление СБКТС и ЭПТС.</li>
+        </ol>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="container about__inner">
+        <div style="width:100%;max-width:300px;aspect-ratio:1;background:#ddd;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:48px;color:#999;">👤</div>
+        <div>
+            <h2>Основатель компании</h2>
+            <p><strong>Альберт Михайленко</strong></p>
+            <p>Я лично нахожусь в Китае и проверяю каждую машину перед отправкой. Моя цель — привезти вам авто мечты по честной цене, без скрытых платежей. Скоро здесь появится свежий прайс-лист с автомобилями, а пока вы можете оставить заявку на индивидуальный подбор!</p>
+        </div>
+    </div>
+</section>
+
+<section class="lead" id="lead">
+    <div class="container">
+        <h2>Оставьте заявку на консультацию</h2>
+        <form class="lead__form" id="lead-form">
+            <input type="text" name="name" placeholder="Ваше имя" required>
+            <input type="tel" name="phone" placeholder="Телефон" required>
+            <input type="text" name="car" placeholder="Интересующая модель (необязательно)">
+            <button type="submit" class="btn btn--primary">Отправить</button>
+        </form>
+        <p class="lead__note">Или напишите нам в мессенджер — ответим в течение 15 минут.</p>
+    </div>
+</section>
+
+<section class="faq" id="faq">
+    <div class="container">
+        <h2>Частые вопросы</h2>
+        <details><summary>Сколько идёт авто из Китая?</summary><p>В среднем 40 дней через Саратов.</p></details>
+        <details><summary>Какая гарантия?</summary><p>Сертификат на 1 год / 20 000 км, выплаты до 1 000 000 ₽.</p></details>
+        <details><summary>Как оплатить?</summary><p>SWIFT-перевод через банк по INVOICE.</p></details>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container footer__inner">
+        <div>
+            <h3>ChinaCar</h3>
+            <p>Доставка авто из Китая под ключ</p>
+        </div>
+        <div>
+            <h4>Контакты</h4>
+            <a href="tel:+79000000000" id="footer-phone">+7 (900) 000-00-00</a>
+            <div id="footer-messengers" style="margin-top:8px;"></div>
+        </div>
+    </div>
+    <div class="footer__bottom">
+        <p>© 2024 ChinaCar. Все права защищены.</p>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

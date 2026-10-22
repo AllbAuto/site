@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автомобиль | ChinaCar</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .car-page { padding: 60px 0; }
+        .car-page__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+        .car-page__img { width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,.1); object-fit: cover; }
+        .car-page__title { font-size: 32px; margin-bottom: 10px; color: var(--dark); }
+        .car-page__specs { list-style: none; margin-bottom: 24px; }
+        .car-page__specs li { padding: 10px 0; border-bottom: 1px solid #eee; font-size: 16px; }
+        .car-page__price { font-size: 28px; font-weight: 800; color: var(--primary); margin-bottom: 20px; }
+        @media (max-width: 768px) { .car-page__inner { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header__inner">
+            <a href="index.html" class="logo">🚗 ChinaCar</a>
+            <div class="header__contacts">
+                <a href="tel:+79000000000" class="phone" id="header-phone">+7 (900) 000-00-00</a>
+                <div class="messengers" id="header-messengers"></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="car-page">
+        <div class="container">
+            <a href="index.html" style="display:inline-block; margin-bottom: 20px; color: var(--gray); text-decoration: underline;">← Вернуться в каталог</a>
+            
+            <div class="car-page__inner">
+                <!-- Фото авто (если фото нет, будет заглушка) -->
+                <img src="images/cars/audi-a3.jpg" alt="Автомобиль" class="car-page__img" onerror="this.src='https://placehold.co/600x400?text=Фото+авто'">
+                
+                <div>
+                    <h1 class="car-page__title" id="car-title">Загрузка...</h1>
+                    <ul class="car-page__specs" id="car-specs">
+                        <!-- Характеристики подтянутся скриптом -->
+                    </ul>
+                    <div class="car-page__price" id="car-price">Загрузка...</div>
+                    
+                    <a href="index.html#lead" class="btn btn--primary" style="width: 100%; text-align: center;">Оставить заявку на этот автомобиль</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div><h3>ChinaCar</h3><p>Доставка авто из Китая под ключ</p></div>
+        </div>
+        <div class="footer__bottom"><p>© 2024 ChinaCar. Все права защищены.</p></div>
+    </footer>
+
+    <script>
+        // Этот скрипт берет ID машины из адресной строки и находит её в базе
+        async function loadCar() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const carId = urlParams.get('id');
+
+            try {
+                const res = await fetch('data/cars.json');
+                const cars = await res.json();
+                const car = cars.find(c => c.id == carId);
+
+                if (car) {
+                    document.title = car.brand + ' ' + car.model + ' | ChinaCar';
+                    document.getElementById('car-title').textContent = car.brand + ' ' + car.model;
+                    document.getElementById('car-price').textContent = car.price;
+                    
+                    document.getElementById('car-specs').innerHTML = `
+                        <li><strong>Год выпуска:</strong> ${car.year}</li>
+                        <li><strong>Коробка передач:</strong> ${car.transmission}</li>
+                        <li><strong>Двигатель:</strong> ${car.engine}</li>
+                        <li><strong>Пробег:</strong> ${car.mileage}</li>
+                    `;
+                    
+                    if (car.image) {
+                        document.querySelector('.car-page__img').src = car.image;
+                    }
+                }
+            } catch (e) { console.error(e); }
+        }
+        
+        // Подгружаем телефон и кнопки из config.json
+        async function loadConfig() {
+            try {
+                const res = await fetch('data/config.json');
+                const cfg = await res.json();
+                document.getElementById('header-phone').textContent = cfg.phone;
+                document.getElementById('header-phone').href = 'tel:' + cfg.phoneRaw;
+                let m = '';
+                if (cfg.whatsapp) m += `<a href="${cfg.whatsapp}" class="btn-messenger wa" target="_blank">WhatsApp</a>`;
+                if (cfg.telegram) m += `<a href="${cfg.telegram}" class="btn-messenger tg" target="_blank">Telegram</a>`;
+                document.getElementById('header-messengers').innerHTML = m;
+            } catch (e) {}
+        }
+
+        loadCar();
+        loadConfig();
+    </script>
+</body>
+</html>
